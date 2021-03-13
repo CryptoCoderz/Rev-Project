@@ -459,7 +459,7 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
 {
     int64_t nSubsidy = nBlockStandardReward;
 
-    if(nHeight > nReservePhaseStart) {
+    if(nHeight >= nReservePhaseStart) {
         if(pindexBest->nMoneySupply < (nBlockRewardReserve * 100)) {
             nSubsidy = nBlockRewardReserve;
             return nSubsidy;
@@ -478,9 +478,10 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
 {
     int64_t nSubsidy = nBlockStandardReward; // PoS Staking - pindexPrev is info from the last block, and -> means to get specific info from that block. Getblocktime is the epoch time of that block.
 
-    if(pindexPrev->nHeight+1 > nReservePhaseStart) { // If, all 100 blocks of the premine isn't done, then next blocks have premine value
+    if(pindexPrev->nHeight+1 >= nReservePhaseStart) { // If, all 100 blocks of the premine isn't done, then next blocks have premine value
         if(pindexBest->nMoneySupply < (nBlockRewardReserve * 100)) {
             nSubsidy = nBlockRewardReserve;
+            return nSubsidy;
         }
     }
 
