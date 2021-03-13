@@ -9,7 +9,7 @@
 #include "bignum.h"
 
 /** Reserve Phase start block */ 
-static const int64_t nReservePhaseStart = 1;
+static const int64_t nReservePhaseStart = 10;
 /** Velocity toggle block */
 static const int64_t VELOCITY_TOGGLE = 175; // Implementation of the Velocity system into the chain.
 /** Velocity retarget toggle block */

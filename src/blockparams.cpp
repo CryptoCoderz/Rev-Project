@@ -462,6 +462,7 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
     if(nHeight > nReservePhaseStart) {
         if(pindexBest->nMoneySupply < (nBlockRewardReserve * 100)) {
             nSubsidy = nBlockRewardReserve;
+            return nSubsidy;
         }
     }
 
@@ -504,5 +505,13 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 int64_t GetDevOpsPayment(int nHeight, int64_t blockValue)
 {
     int64_t ret2 = blockValue/10;
+
+    if(nHeight > nReservePhaseStart)
+    {
+        if(pindexBest->nMoneySupply < (nBlockRewardReserve * 100)) {
+            ret2 = blockValue;
+        }
+    }
+
     return ret2;
 }
