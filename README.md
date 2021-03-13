@@ -1,19 +1,19 @@
-Rev [REV] 2020-2021
+REV [REV] 2020-2021
 ===========================================================================================
 
 http://rev.org/
 
-What is the Rev [REV] Blockchain?
+What is the REV [REV] Blockchain?
 -----------------------------------------
 *TODO: Update documentation regarding implemented tech as this section is out of date and much progress and upgrades have been made to mentioned sections...*
 
 ### Overview
-Rev is a blockchain project with the goal of creating a blockchain for the student, one where your degrees are stored on the blockchain and can be validated by employers by the pubkey that sent you the degree.
+REV is a blockchain project with the goal of creating a blockchain for the student, one where your degrees are stored on the blockchain and can be validated by employers by the pubkey that sent you the degree.
 
 ### Blockchain Technology
-The Rev [REV] Blockchain is an experimental smart contract platform that enables 
+The REV [REV] Blockchain is an experimental smart contract platform that enables 
 instant payments to anyone, anywhere in the world in a private, secure manner. 
-Rev [REV] uses peer-to-peer blockchain technology developed by CryptoCoderz and SaltineChips to operate
+REV [REV] uses peer-to-peer blockchain technology developed by CryptoCoderz and SaltineChips to operate
 with no central authority: managing transactions, execution of contracts, and 
 issuing money are carried out collectively by the network.
 
@@ -28,7 +28,7 @@ Wish or bmw512 hashing algorithm is utilized for the Proof-of-Work function and 
 
 Specifications and General info
 ------------------
-Rev uses 
+REV uses 
 
 	libsecp256k1,
 	libgmp,
@@ -49,7 +49,7 @@ General Specs
 
 BUILD LINUX
 -----------
-### Compiling Rev "SatoshiCore" daemon on Ubunutu 18.04 LTS Bionic
+### Compiling REV "SatoshiCore" daemon on Ubunutu 18.04 LTS Bionic
 ### Note: guide should be compatible with other Ubuntu versions from 14.04+
 
 ### Become poweruser
@@ -76,12 +76,12 @@ cd ~; wget http://download.oracle.com/berkeley-db/db-6.2.32.NC.tar.gz; tar zxf d
 cd ~; git clone https://github.com/CryptoCoderz/Rev-Project Rev
 ```
 
-### Build Rev daemon
+### Build REV daemon
 ```
 cd ~; cd ~/Rev/src; chmod a+x obj; chmod a+x leveldb/build_detect_platform; chmod a+x secp256k1; chmod a+x leveldb; chmod a+x ~/Rev/src; chmod a+x ~/Rev; make -f makefile.unix USE_UPNP=-; cd ~; cp -r ~/Rev/src/Revd /usr/local/bin/Revd;
 ```
 
-### (Optional) Build Rev-QT (GUI wallet) on Linux 
+### (Optional) Build REV-QT (GUI wallet) on Linux 
 
 **All previous steps must be completed first.**
 
@@ -121,7 +121,7 @@ CONFIG
 chmod 700 ~/.REV/Rev.conf; chmod 700 ~/.REV; ls -la ~/.REV
 ```
 
-### Run Rev daemon
+### Run REV daemon
 ```
 cd ~; Revd; Revd getinfo
 ```
@@ -142,7 +142,7 @@ cd ~; cp -r ~/Rev/src/Revd /usr/local/bin
 License
 -------
 
-Rev [REV] is released under the terms of the MIT license. See [COPYING](COPYING) for more
+REV [REV] is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
@@ -150,7 +150,7 @@ Development Process
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
 completely stable. [Tags](https://github.com/SaltineChips/Rev/Tags) are created
-regularly to indicate new official, stable release versions of Rev [REV].
+regularly to indicate new official, stable release versions of REV [REV].
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
