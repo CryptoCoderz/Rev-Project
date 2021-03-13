@@ -73,7 +73,7 @@ cd ~; wget http://download.oracle.com/berkeley-db/db-6.2.32.NC.tar.gz; tar zxf d
 
 ### GitHub pull (Source Download)
 ```
-cd ~; git clone https://github.com/SaltineChips/Rev Rev
+cd ~; git clone https://github.com/CryptoCoderz/Rev Rev
 ```
 
 ### Build Rev daemon
