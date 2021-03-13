@@ -1,4 +1,4 @@
-Rev [REV] 2020
+Rev [REV] 2020-2021
 ===========================================================================================
 
 http://rev.org/
@@ -41,10 +41,10 @@ Rev uses
 
 General Specs
 
-	Block Spacing: 5 Minutes
-	Stake Minimum Age: 80 Confirmations (PoS-v3) | 6 Hours (PoS-v2)
-	Port: 20021
-	RPC Port: 19697
+	Block Spacing: 2 Minutes
+	Stake Minimum Age: 30 Confirmations (PoS-v3)
+	Port: 21061
+	RPC Port: 21062
 
 
 BUILD LINUX
@@ -106,15 +106,15 @@ cd ~; cd ~/Rev; qmake -qt=qt5 USE_UPNP=-; make
 
 ### Create config file for daemon
 ```
-cd ~; sudo ufw allow 20021/tcp; sudo ufw allow 19697/tcp; sudo ufw allow 22/tcp; sudo mkdir ~/.REV; cat << "CONFIG" >> ~/.REV/Rev.conf
+cd ~; sudo ufw allow 21061/tcp; sudo ufw allow 21062/tcp; sudo ufw allow 22/tcp; sudo mkdir ~/.REV; cat << "CONFIG" >> ~/.REV/Rev.conf
 listen=1
 server=1
 daemon=1
 testnet=0
 rpcuser=REVrpcuser
 rpcpassword=SomeCrazyVeryVerySecurePasswordHere
-rpcport=19697
-port=20021
+rpcport=21062
+port=21061
 rpcconnect=127.0.0.1
 rpcallowip=127.0.0.1
 CONFIG
