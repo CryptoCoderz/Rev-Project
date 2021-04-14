@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = Rev-qt
-VERSION = 1.0.0.0
+VERSION = 1.0.1.0
 INCLUDEPATH += src src/json src/qt src/qt/plugins/mrichtexteditor
 QT += core gui widgets network printsupport
 DEFINES += ENABLE_WALLET
@@ -20,8 +20,8 @@ win32{
 BOOST_LIB_SUFFIX=-mgw8-mt-s-x32-1_74
 BOOST_INCLUDE_PATH=C:/deps/boost_1_74_0
 BOOST_LIB_PATH=C:/deps/boost_1_74_0/stage/lib
-BDB_INCLUDE_PATH=C:/deps/db-6.2.32.NC/build_unix
-BDB_LIB_PATH=C:/deps/db-6.2.32.NC/build_unix
+BDB_INCLUDE_PATH=C:/deps/db-6.2.38.NC/build_unix
+BDB_LIB_PATH=C:/deps/db-6.2.38.NC/build_unix
 OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.2u/include
 OPENSSL_LIB_PATH=C:/deps/openssl-1.0.2u
 MINIUPNPC_INCLUDE_PATH=C:/deps/
@@ -289,6 +289,8 @@ HEADERS += src/qt/bitcoingui.h \
     src/rpcserver.h \
     src/rpcvelocity.h \
     src/limitedmap.h \
+    src/qt/fractalui.h \
+    src/qt/tokenui.h \
     src/qt/overviewpage.h \
     src/qt/csvmodelwriter.h \
     src/crypter.h \
@@ -326,6 +328,14 @@ HEADERS += src/qt/bitcoingui.h \
     src/crypto/common/sha1.h \
     src/crypto/common/sha256.h \
     src/crypto/common/sha512.h \
+    src/stb/stb_image.h \
+    src/stb/stb_image_write.h \
+    src/fractal/fractalengine.h \
+    src/fractal/fractalcontract.h \
+    src/fractal/fractalparams.h \
+    src/fractal/fractaldataob.h \
+    src/fractal/fractalnft.h \
+    src/fractal/fractalbvac.h \
     src/qt/masternodemanager.h \
     src/qt/addeditadrenalinenode.h \
     src/qt/adrenalinenodeconfigdialog.h \
@@ -432,6 +442,14 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/noui.cpp \
     src/kernel.cpp \
     src/pbkdf2.cpp \
+    src/qt/fractalui.cpp \
+    src/qt/tokenui.cpp \
+    src/fractal/fractalengine.cpp \
+    src/fractal/fractalcontract.cpp \
+    src/fractal/fractalparams.cpp \
+    src/fractal/fractaldataob.cpp \
+    src/fractal/fractalnft.cpp \
+    src/fractal/fractalbvac.cpp \
     src/support/cleanse.cpp \
     src/stealth.cpp \
     src/qt/flowlayout.cpp \
@@ -494,6 +512,8 @@ src/qt/forms/coincontroldialog.ui \
     src/qt/forms/sendmessagesentry.ui \
     src/qt/forms/sendmessagesdialog.ui \
     src/qt/forms/blockbrowser.ui \
+    src/qt/forms/fractalui.ui \
+    src/qt/forms/tokenui.ui \
     src/qt/forms/settingspage.ui \
     src/qt/plugins/mrichtexteditor/mrichtextedit.ui
 

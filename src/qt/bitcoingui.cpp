@@ -38,6 +38,7 @@
 #include "messagemodel.h"
 #include "messagepage.h"
 #include "blockbrowser.h"
+#include "fractalui.h"
 #include "settingspage.h"
 #include "importprivatekeydialog.h"
 
@@ -153,6 +154,8 @@ RevGUI::RevGUI(QWidget *parent):
 
     sendCoinsPage = new SendCoinsDialog(this);
 
+    fractalUI = new FractalUI(this);
+
     signVerifyMessageDialog = new SignVerifyMessageDialog(this);
 
     masternodeManagerPage = new MasternodeManager(this);
@@ -169,6 +172,7 @@ RevGUI::RevGUI(QWidget *parent):
     centralStackedWidget->addWidget(masternodeManagerPage);
     centralStackedWidget->addWidget(messagePage);
     centralStackedWidget->addWidget(blockBrowser);
+    centralStackedWidget->addWidget(fractalUI);
     centralStackedWidget->addWidget(settingsPage);
 
     QWidget *centralWidget = new QWidget();
@@ -345,6 +349,12 @@ void RevGUI::createActions()
     settingsAction->setCheckable(true);
     tabGroup->addAction(settingsAction);
 
+    fractalUIAction = new QAction(QIcon(":/icons/fractal"), tr("&Fractal UI"), this);
+    fractalUIAction->setToolTip(tr("REV Fractal Network"));
+    fractalUIAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_9));
+    fractalUIAction->setCheckable(true);
+    tabGroup->addAction(fractalUIAction);
+
     showBackupsAction = new QAction(QIcon(":/icons/browse"), tr("Show Auto&Backups"), this);
     showBackupsAction->setStatusTip(tr("S"));
 
@@ -364,6 +374,8 @@ void RevGUI::createActions()
     connect(masternodeManagerAction, SIGNAL(triggered()), this, SLOT(gotoMasternodeManagerPage()));
     connect(messageAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(messageAction, SIGNAL(triggered()), this, SLOT(gotoMessagePage()));
+    connect(fractalUIAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(fractalUIAction, SIGNAL(triggered()), this, SLOT(gotoFractalUI()));
 
     quitAction = new QAction(QIcon(":icons/quit"), tr("E&xit"), this);
     quitAction->setToolTip(tr("Quit application"));
@@ -503,6 +515,7 @@ void RevGUI::createToolBars()
     toolbar->addAction(receiveCoinsAction);
     toolbar->addAction(addressBookAction);
     toolbar->addAction(masternodeManagerAction);
+    toolbar->addAction(fractalUIAction);
     //toolbar->addAction(blockAction);
     toolbar->addAction(settingsAction);
 
@@ -997,6 +1010,16 @@ void RevGUI::gotoMasternodeManagerPage()
 
     setStyleSheet("#Rev { background-image: url(:/images/background_light_alt); }");
 }
+
+void RevGUI::gotoFractalUI()
+{
+    fractalUIAction->setChecked(true);
+    centralStackedWidget->setCurrentWidget(fractalUI);
+
+    exportAction->setEnabled(false);
+    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+}
+
 
 void RevGUI::gotoBlockBrowser()
 {
