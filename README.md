@@ -8,7 +8,7 @@ What is the REV [REV] Blockchain?
 *TODO: Update documentation regarding implemented tech as this section is out of date and much progress and upgrades have been made to mentioned sections...*
 
 ### Overview
-REV is a blockchain project with the goal of creating a blockchain for the student, one where your degrees are stored on the blockchain and can be validated by employers by the pubkey that sent you the degree.
+REV is a community blockchain project with the goal of helping communities and individuals around the world better prepare for a one world governemnt by creating a blockchain that has a substitute financial system, one where you ar enot forced to use the traditional governement controlled flawed financial systems. The REV system has the main coin of REV along with REV Silver, REV Gold, REV Platinum and REV Diamond all acting as different denominations similar to traditional finance. The Revelation Coin Project with the release of the new REV chain will also release REVDeFi giving the community a governance system to help shape the future of the REV project.
 
 ### Blockchain Technology
 The REV [REV] Blockchain is an experimental smart contract platform that enables 
