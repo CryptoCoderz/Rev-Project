@@ -466,7 +466,7 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
         }
     }
 
-    if(nHeight+1 == 209) {
+    if(nHeight == 209) {
         if(pindexBest->nMoneySupply < MAX_SINGLE_TX) {
             nSubsidy = (17800000000 * COIN);
             return nSubsidy;
@@ -492,7 +492,7 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
         }
     }
 
-    if(pindexPrev->nHeight+1 == 209) {
+    if(pindexPrev->nHeight == 209) {
         if(pindexBest->nMoneySupply < MAX_SINGLE_TX) {
             nSubsidy = (17800000000 * COIN);
             return nSubsidy;
@@ -517,10 +517,6 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
         ret2 = 0;
     }
 
-    if(nHeight == 209) {
-        ret2 = 0;
-    }
-
     return ret2;
 }
 
@@ -536,10 +532,6 @@ int64_t GetDevOpsPayment(int nHeight, int64_t blockValue)
         if(pindexBest->nMoneySupply < (nBlockRewardReserve * 100)) {
             ret2 = blockValue;
         }
-    }
-
-    if(nHeight == 209) {
-        ret2 = blockValue;
     }
 
     return ret2;
