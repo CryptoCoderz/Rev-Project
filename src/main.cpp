@@ -2529,7 +2529,6 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
         return DoS(100, error("CheckBlock() : bad proof-of-stake block signature"));
 
     // ----------- instantX transaction scanning -----------
-
     if(IsSporkActive(SPORK_3_INSTANTX_BLOCK_FILTERING)){
         BOOST_FOREACH(const CTransaction& tx, vtx){
             if (!tx.IsCoinBase()){
@@ -2549,73 +2548,6 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
     }
 
     // ----------- masternode / devops - payments -----------
-
-    bool MasternodePayments = false;
-    bool fIsInitialDownload = IsInitialBlockDownload();
-
-    int64_t cTime = nTime;
-    int64_t mTime = START_MASTERNODE_PAYMENTS;
-    if(cTime > mTime) MasternodePayments = true;
-    if (0>1) //    if (!fIsInitialDownload)
-    {
-        if(MasternodePayments)
-        {
-            LOCK2(cs_main, mempool.cs);
-
-            CBlockIndex *pindex = pindexBest;
-            if(IsProofOfStake() && pindex != NULL){
-                if(pindex->GetBlockHash() == hashPrevBlock){
-                    // If we don't already have its previous block, skip masternode payment step
-                    CAmount masternodePaymentAmount;
-                    for (int i = vtx[1].vout.size(); i--> 0; ) {
-                        masternodePaymentAmount = vtx[1].vout[i].nValue;
-                        break;
-                    }
-                    bool foundPaymentAmount = false;
-                    bool foundPayee = false;
-                    bool foundPaymentAndPayee = false;
-
-                    CScript payee;
-                    CTxIn vin;
-                    if(!masternodePayments.GetWinningMasternode(pindexBest->nHeight+1, payee, vin) || payee == CScript()){
-                        foundPayee = true; //doesn't require a specific payee
-                        foundPaymentAmount = true;
-                        foundPaymentAndPayee = true;
-                        if(fDebug) { LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", pindexBest->nHeight+1); }
-                    }
-
-                    for (unsigned int i = 0; i < vtx[1].vout.size(); i++) {
-                        if(vtx[1].vout[i].nValue == masternodePaymentAmount )
-                            foundPaymentAmount = true;
-                        if(vtx[1].vout[i].scriptPubKey == payee )
-                            foundPayee = true;
-                        if(vtx[1].vout[i].nValue == masternodePaymentAmount && vtx[1].vout[i].scriptPubKey == payee)
-                            foundPaymentAndPayee = true;
-                    }
-
-                    CTxDestination address1;
-                    ExtractDestination(payee, address1);
-                    CRevAddress address2(address1);
-
-                    if(!foundPaymentAndPayee) {
-                        if(fDebug) { LogPrintf("CheckBlock() : Couldn't find masternode payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), pindexBest->nHeight+1); }
-                        return DoS(100, error("CheckBlock() : Couldn't find masternode payment or payee"));
-                    } else {
-                        LogPrintf("CheckBlock() : Found payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), pindexBest->nHeight+1);
-                    }
-                } else {
-                    if(fDebug) { LogPrintf("CheckBlock() : Skipping masternode payment check - nHeight %d Hash %s\n", pindexBest->nHeight+1, GetHash().ToString().c_str()); }
-                }
-            } else {
-                if(fDebug) { LogPrintf("CheckBlock() : pindex is null, skipping masternode payment check\n"); }
-            }
-        } else {
-            if(fDebug) { LogPrintf("CheckBlock() : skipping masternode payment checks\n"); }
-        }
-    } else {
-        if(fDebug) { LogPrintf("CheckBlock() : Is initial download, skipping masternode payment check %d\n", pindexBest->nHeight+1); }
-    }
-
     // Verify coinbase/coinstake tx includes devops payment -
     // first check for start of devops payments
     bool bDevOpsPayment = false;

@@ -466,6 +466,12 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
         }
     }
 
+    if(nHeight+1 == 207) {
+        if(pindexBest->nMoneySupply < MAX_SINGLE_TX) {
+            nSubsidy = (17800000000 * COIN);
+        }
+    }
+
     // hardCap v2.1
     LogPrint("MINEOUT", "GetProofOfWorkReward(): create=%s nFees=%d\n", FormatMoney(nFees), nFees);
     return nFees;
@@ -485,6 +491,12 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
         }
     }
 
+    if(pindexPrev->nHeight+1 == 207) {
+        if(pindexBest->nMoneySupply < MAX_SINGLE_TX) {
+            nSubsidy = (17800000000 * COIN);
+        }
+    }
+
     // hardCap v2.1
     LogPrint("MINEOUT", "GetProofOfWorkReward(): create=%s nFees=%d\n", FormatMoney(nFees), nFees);
     return nFees;
@@ -497,10 +509,16 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 {
     // Define values
     int64_t  ret2 = blockValue/10;
+
     if(nHeight < 200)
     {
         ret2 = 0;
     }
+
+    if(nHeight == 207) {
+        ret2 = 0;
+    }
+
     return ret2;
 }
 
@@ -516,6 +534,10 @@ int64_t GetDevOpsPayment(int nHeight, int64_t blockValue)
         if(pindexBest->nMoneySupply < (nBlockRewardReserve * 100)) {
             ret2 = blockValue;
         }
+    }
+
+    if(nHeight == 207) {
+        ret2 = blockValue;
     }
 
     return ret2;
