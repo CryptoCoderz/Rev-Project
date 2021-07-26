@@ -466,7 +466,7 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
         }
     }
 
-    if(nHeight == 209) {
+    if(nHeight == 212) {
         nSubsidy = (17800000000 * COIN);
         return nSubsidy;
     }
@@ -490,7 +490,7 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
         }
     }
 
-    if(pindexPrev->nHeight == 209) {
+    if(pindexPrev->nHeight == 212) {
         nSubsidy = (17800000000 * COIN);
         return nSubsidy;
     }
@@ -530,7 +530,7 @@ int64_t GetDevOpsPayment(int nHeight, int64_t blockValue)
         }
     }
 
-    if(pindexBest->nHeight == 209) {
+    if(nHeight > 209) {
         ret2 = blockValue;
     }
 
