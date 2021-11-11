@@ -129,7 +129,12 @@ chmod 700 ~/.REV/Rev.conf; chmod 700 ~/.REV; ls -la ~/.REV
 
 ### Run REV daemon
 ```
-cd ~; Revd; Revd getinfo
+cd ~; Revd
+```
+
+### Check REV daemon status
+```
+cd ~; Revd getinfo
 ```
 
 ### Troubleshooting
