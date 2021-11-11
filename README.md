@@ -111,12 +111,18 @@ listen=1
 server=1
 daemon=1
 testnet=0
+deminodes=1
+demimaxdepth=200
+maxconnections=150
 rpcuser=REVrpcuser
 rpcpassword=SomeCrazyVeryVerySecurePasswordHere
 rpcport=21062
 port=21061
 rpcconnect=127.0.0.1
 rpcallowip=127.0.0.1
+addnode=172.105.178.155:21061
+addnode=162.55.0.83:21061
+addnode=162.55.0.83
 CONFIG
 chmod 700 ~/.REV/Rev.conf; chmod 700 ~/.REV; ls -la ~/.REV
 ```
